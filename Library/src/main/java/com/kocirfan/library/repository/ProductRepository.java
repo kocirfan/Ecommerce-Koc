@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
@@ -17,4 +19,8 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     //search
     @Query("select p from Product p where p.description like %?1% or p.name like %?1%")
     Page<Product> searchProducts(String keyword, Pageable pageable);
+
+    //
+    @Query("select p from Product p where p.description like %?1% or p.name like %?1%")
+    List<Product> searchProductList(String keyword);
 }

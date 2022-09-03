@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -44,7 +45,7 @@ public class ProductController {
         if(principal == null){
             return "redirect:/login";
         }
-         Page<Product> products = productService.pageProducts(pageNo);
+         Page<ProductDto> products = productService.pageProducts(pageNo);
          model.addAttribute("title", "Manage Product");
          model.addAttribute("size", products.getSize());
          model.addAttribute("totalPages", products.getTotalPages());
@@ -59,7 +60,7 @@ public class ProductController {
          if(principal == null){
              return "redirect:/login";
          }
-         Page<Product> products = productService.searchProducts(pageNo, keyword);
+         Page<ProductDto> products = productService.searchProducts(pageNo, keyword);
          model.addAttribute("title", "Search Result");
          model.addAttribute("products", products);
          model.addAttribute("size", products.getSize());
@@ -140,5 +141,6 @@ public class ProductController {
         }
         return "redirect:/products";
     }
+
 
 }
