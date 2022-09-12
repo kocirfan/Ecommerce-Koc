@@ -42,7 +42,7 @@
                 <div th:if="${error}" class="text-center alert alert-danger">
                     <p th:text="${error}"></p>
                 </div>
-                <table class="table table-bordered" th:if="${size > 0}">
+                <table class="table table-bordered mt-1" th:if="${size > 0}">
                     <thead>
                     <tr>
                         <th scope="col">Name</th>
@@ -72,12 +72,12 @@
 
                     </tbody>
                 </table>
-                <!-- End of Main Content -->
+                <!-- End of Main Content-->
                 <nav aria-label="Page navigation example">
                     <ul class="pagination">
-                        <!-- //startPAge = 0 -->
+                        <!-- //startPAge = 0-->
                          <li th:if="${currentPage !=0 }" class="page-item">
-                             <a th:href="@{'/products/' + ${currentPage -1}}" class="page-link" >Previous</a>
+                             <a th:href="@{'/products/' + ${currentPage -0}}" class="page-link" >Previous</a>
                          </li>
                          <li th:each="i : ${#numbers.sequence(1, totalPages)}" th:classappend="${currentPage == i - 1 ? 'active' : ''}" class="page-item">
                              <a th:href="@{'/products/' + ${i -1}}" class="page-link" ><span th:text="${i}"></span></a>
